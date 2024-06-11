@@ -1,0 +1,313 @@
+# 训练5个金标模型
+
+CUDA_VISIBLE_DEVICES=0,1 \
+nohup \
+python3 -u train_v9.py --train_path datasets/spt1/train_format.json \
+                   --dev_path datasets/spt1/dev_format.json \
+                   --test_path datasets/spt1/dev_format.json \
+                   --report_steps 20 \
+                   --epochs_num 20 --batch_size 8 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt1_15000.bin \
+                   --pretrained_model_path models/new_model_15000.bin \
+                   > logs/spt1_15000.log &
+
+CUDA_VISIBLE_DEVICES=2,3 \
+nohup \
+python3 -u train_v9.py --train_path datasets/spt2/train_format.json \
+                   --dev_path datasets/spt2/dev_format.json \
+                   --test_path datasets/spt2/dev_format.json \
+                   --report_steps 20 \
+                   --epochs_num 20 --batch_size 8 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt2_15000.bin \
+                   --pretrained_model_path models/new_model_15000.bin \
+                   > logs/spt2_15000.log &
+
+CUDA_VISIBLE_DEVICES=4,5 \
+nohup \
+python3 -u train_v9.py --train_path datasets/spt3/train_format.json \
+                   --dev_path datasets/spt3/dev_format.json \
+                   --test_path datasets/spt3/dev_format.json \
+                   --report_steps 20 \
+                   --epochs_num 20 --batch_size 8 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt3_15000.bin \
+                   --pretrained_model_path models/new_model_15000.bin \
+                   > logs/spt3_15000.log &
+
+CUDA_VISIBLE_DEVICES=6,7 \
+nohup \
+python3 -u train_v9.py --train_path datasets/spt4/train_format.json \
+                   --dev_path datasets/spt4/dev_format.json \
+                   --test_path datasets/spt4/dev_format.json \
+                   --report_steps 20 \
+                   --epochs_num 20 --batch_size 8 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt4_15000.bin \
+                   --pretrained_model_path models/new_model_15000.bin \
+                   > logs/spt4_15000.log &
+
+CUDA_VISIBLE_DEVICES=8,9 \
+nohup \
+python3 -u train_v9.py --train_path datasets/spt5/train_format.json \
+                   --dev_path datasets/spt5/dev_format.json \
+                   --test_path datasets/spt5/dev_format.json \
+                   --report_steps 20 \
+                   --epochs_num 20 --batch_size 8 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt5_15000.bin \
+                   --pretrained_model_path models/new_model_15000.bin \
+                   > logs/spt5_15000.log &
+
+# 测试5个金标模型
+
+CUDA_VISIBLE_DEVICES=15 \
+python3 -u test_v9.py --train_path datasets/spt1/train_format.json \
+                   --dev_path datasets/spt1/dev_format.json \
+                   --test_path datasets/testing_data/test_format_new.json \
+                   --batch_size 1 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt1_15000.bin \
+                   --results_path results/model_spt1_result_15000
+
+CUDA_VISIBLE_DEVICES=15 \
+python3 -u test_v9.py --train_path datasets/spt2/train_format.json \
+                   --dev_path datasets/spt2/dev_format.json \
+                   --test_path datasets/testing_data/test_format_new.json \
+                   --batch_size 1 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt2_15000.bin \
+                   --results_path results/model_spt2_result_15000
+
+CUDA_VISIBLE_DEVICES=15 \
+python3 -u test_v9.py --train_path datasets/spt3/train_format.json \
+                   --dev_path datasets/spt3/dev_format.json \
+                   --test_path datasets/testing_data/test_format_new.json \
+                   --batch_size 1 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt3_15000.bin \
+                   --results_path results/model_spt3_result_15000
+
+CUDA_VISIBLE_DEVICES=15 \
+python3 -u test_v9.py --train_path datasets/spt4/train_format.json \
+                   --dev_path datasets/spt4/dev_format.json \
+                   --test_path datasets/testing_data/test_format_new.json \
+                   --batch_size 1 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt4_15000.bin \
+                   --results_path results/model_spt4_result_15000
+
+CUDA_VISIBLE_DEVICES=15 \
+python3 -u test_v9.py --train_path datasets/spt5/train_format.json \
+                   --dev_path datasets/spt5/dev_format.json \
+                   --test_path datasets/testing_data/test_format_new.json \
+                   --batch_size 1 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt5_15000.bin \
+                   --results_path results/model_spt5_result_15000
+
+# 训练带有B榜伪标签数据的模型
+
+CUDA_VISIBLE_DEVICES=0,1 \
+nohup \
+python3 -u train_v9.py --train_path datasets/spt1/train_format_b.json \
+                   --dev_path datasets/spt1/dev_format.json \
+                   --test_path datasets/spt1/dev_format.json \
+                   --pretrained_model_path models/new_model_15000.bin \
+                   --report_steps 20 \
+                   --epochs_num 20 --batch_size 8 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt1_15000_fakeb_hard.bin \
+                   > logs/spt1_15000_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=0,1 \
+nohup \
+python3 -u train_v9.py --train_path datasets/spt2/train_format_b.json \
+                   --dev_path datasets/spt2/dev_format.json \
+                   --test_path datasets/spt2/dev_format.json \
+                   --pretrained_model_path models/new_model_15000.bin \
+                   --report_steps 20 \
+                   --epochs_num 20 --batch_size 8 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt2_15000_fakeb_hard.bin \
+                   > logs/spt2_15000_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=0,1 \
+nohup \
+python3 -u train_v9.py --train_path datasets/spt3/train_format_b.json \
+                   --dev_path datasets/spt3/dev_format.json \
+                   --test_path datasets/spt3/dev_format.json \
+                   --pretrained_model_path models/new_model_15000.bin \
+                   --report_steps 20 \
+                   --epochs_num 20 --batch_size 8 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt3_15000_fakeb_hard.bin \
+                   > logs/spt3_15000_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=4,5 \
+nohup \
+python3 -u train_v9.py --train_path datasets/spt4/train_format_b.json \
+                   --dev_path datasets/spt4/dev_format.json \
+                   --test_path datasets/spt4/dev_format.json \
+                   --pretrained_model_path models/new_model_15000.bin \
+                   --report_steps 20 \
+                   --epochs_num 20 --batch_size 8 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt4_15000_fakeb_hard.bin \
+                   > logs/spt4_15000_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=8,9 \
+nohup \
+python3 -u train_v9.py --train_path datasets/spt5/train_format_b.json \
+                   --dev_path datasets/spt5/dev_format.json \
+                   --test_path datasets/spt5/dev_format.json \
+                   --pretrained_model_path models/new_model_15000.bin \
+                   --report_steps 20 \
+                   --epochs_num 20 --batch_size 8 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt5_15000_fakeb_hard.bin \
+                   > logs/spt5_15000_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=6,7 \
+nohup \
+python3 -u train_v9.py --train_path datasets/spt6/train_format_b.json \
+                   --dev_path datasets/spt6/dev_format.json \
+                   --test_path datasets/spt6/dev_format.json \
+                   --pretrained_model_path models/new_model_15000.bin \
+                   --report_steps 20 \
+                   --epochs_num 20 --batch_size 8 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt6_15000_fakeb_hard.bin \
+                   > logs/spt6_15000_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=10,11 \
+nohup \
+python3 -u train_v9.py --train_path datasets/spt7/train_format_b.json \
+                   --dev_path datasets/spt7/dev_format.json \
+                   --test_path datasets/spt7/dev_format.json \
+                   --pretrained_model_path models/new_model_15000.bin \
+                   --report_steps 20 \
+                   --epochs_num 20 --batch_size 8 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt7_15000_fakeb_hard.bin \
+                   > logs/spt7_15000_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=12,15 \
+nohup \
+python3 -u train_v9.py --train_path datasets/spt8/train_format_b.json \
+                   --dev_path datasets/spt8/dev_format.json \
+                   --test_path datasets/spt8/dev_format.json \
+                   --pretrained_model_path models/new_model_15000.bin \
+                   --report_steps 20 \
+                   --epochs_num 20 --batch_size 8 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt8_15000_fakeb_hard.bin \
+                   > logs/spt8_15000_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=2,3 \
+nohup \
+python3 -u train_v9.py --train_path datasets/spt9/train_format_b.json \
+                   --dev_path datasets/spt9/dev_format.json \
+                   --test_path datasets/spt9/dev_format.json \
+                   --pretrained_model_path models/new_model_15000.bin \
+                   --report_steps 20 \
+                   --epochs_num 20 --batch_size 8 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt9_15000_fakeb_hard.bin \
+                   > logs/spt9_15000_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=13,14 \
+nohup \
+python3 -u train_v9.py --train_path datasets/spt10/train_format_b.json \
+                   --dev_path datasets/spt10/dev_format.json \
+                   --test_path datasets/spt10/dev_format.json \
+                   --pretrained_model_path models/new_model_15000.bin \
+                   --report_steps 20 \
+                   --epochs_num 20 --batch_size 8 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt10_15000_fakeb_hard.bin \
+                   > logs/spt10_15000_fakeb_hard.log &
+
+
+# 测试带有B榜伪标签数据的模型
+
+CUDA_VISIBLE_DEVICES=1 \
+nohup \
+python3 -u test_v9.py --train_path datasets/spt1/train_format_b.json \
+                   --dev_path datasets/spt1/dev_format.json \
+                   --test_path datasets/testing_data/test_format_new.json \
+                   --batch_size 1 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt1_15000_fakeb_hard.bin \
+                   --results_path results/model_spt1_result_fakeb_hard \
+                   > logs/spt1_test_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=2 \
+nohup \
+python3 -u test_v9.py --train_path datasets/spt2/train_format_b.json \
+                   --dev_path datasets/spt2/dev_format.json \
+                   --test_path datasets/testing_data/test_format_new.json \
+                   --batch_size 1 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt2_15000_fakeb_hard.bin \
+                   --results_path results/model_spt2_result_fakeb_hard \
+                   > logs/spt2_test_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=3 \
+nohup \
+python3 -u test_v9.py --train_path datasets/spt3/train_format_b.json \
+                   --dev_path datasets/spt3/dev_format.json \
+                   --test_path datasets/testing_data/test_format_new.json \
+                   --batch_size 1 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt3_15000_fakeb_hard.bin \
+                   --results_path results/model_spt3_result_fakeb_hard \
+                   > logs/spt3_test_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=4 \
+nohup \
+python3 -u test_v9.py --train_path datasets/spt4/train_format_b.json \
+                   --dev_path datasets/spt4/dev_format.json \
+                   --test_path datasets/testing_data/test_format_new.json \
+                   --batch_size 1 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt4_15000_fakeb_hard.bin \
+                   --results_path results/model_spt4_result_fakeb_hard \
+                   > logs/spt4_test_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=5 \
+nohup \
+python3 -u test_v9.py --train_path datasets/spt5/train_format_b.json \
+                   --dev_path datasets/spt5/dev_format.json \
+                   --test_path datasets/testing_data/test_format_new.json \
+                   --batch_size 1 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt5_15000_fakeb_hard.bin \
+                   --results_path results/model_spt5_result_fakeb_hard \
+                   > logs/spt5_test_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=6 \
+nohup \
+python3 -u test_v9.py --train_path datasets/spt6/train_format_b.json \
+                   --dev_path datasets/spt6/dev_format.json \
+                   --test_path datasets/testing_data/test_format_new.json \
+                   --batch_size 1 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt6_15000_fakeb_hard.bin \
+                   --results_path results/model_spt6_result_fakeb_hard \
+                   > logs/spt6_test_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=7 \
+nohup \
+python3 -u test_v9.py --train_path datasets/spt7/train_format_b.json \
+                   --dev_path datasets/spt7/dev_format.json \
+                   --test_path datasets/testing_data/test_format_new.json \
+                   --batch_size 1 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt7_15000_fakeb_hard.bin \
+                   --results_path results/model_spt7_result_fakeb_hard \
+                   > logs/spt7_test_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=8 \
+nohup \
+python3 -u test_v9.py --train_path datasets/spt8/train_format_b.json \
+                   --dev_path datasets/spt8/dev_format.json \
+                   --test_path datasets/testing_data/test_format_new.json \
+                   --batch_size 1 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt8_15000_fakeb_hard.bin \
+                   --results_path results/model_spt8_result_fakeb_hard \
+                   > logs/spt8_test_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=9 \
+nohup \
+python3 -u test_v9.py --train_path datasets/spt9/train_format_b.json \
+                   --dev_path datasets/spt9/dev_format.json \
+                   --test_path datasets/testing_data/test_format_new.json \
+                   --batch_size 1 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt9_15000_fakeb_hard.bin \
+                   --results_path results/model_spt9_result_fakeb_hard \
+                   > logs/spt9_test_fakeb_hard.log &
+
+CUDA_VISIBLE_DEVICES=10 \
+nohup \
+python3 -u test_v9.py --train_path datasets/spt10/train_format_b.json \
+                   --dev_path datasets/spt10/dev_format.json \
+                   --test_path datasets/testing_data/test_format_new.json \
+                   --batch_size 1 --seq_length 400 --encoder bert \
+                   --output_model_path ./models_save/v9.2.4_spt10_15000_fakeb_hard.bin \
+                   --results_path results/model_spt10_result_fakeb_hard \
+                   > logs/spt10_test_fakeb_hard.log &
