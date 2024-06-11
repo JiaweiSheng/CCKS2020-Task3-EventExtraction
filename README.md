@@ -46,3 +46,25 @@ If you find this code useful, please cite our work:
   doi          = {10.1162/DINT\_A\_00098}
 }
 ```
+or related repo:
+```
+@inproceedings{Sheng2021:CasEE,
+    title = "{C}as{EE}: {A} Joint Learning Framework with Cascade Decoding for Overlapping Event Extraction",
+    author = "Sheng, Jiawei and
+      Guo, Shu and
+      Yu, Bowen and
+      Li, Qian and
+      Hei, Yiming and
+      Wang, Lihong and
+      Liu, Tingwen and
+      Xu, Hongbo",
+    booktitle = "Findings of the Association for Computational Linguistics: ACL-IJCNLP 2021",
+    month = aug,
+    year = "2021",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2021.findings-acl.14",
+    doi = "10.18653/v1/2021.findings-acl.14",
+    pages = "164--174",
+}
+```
