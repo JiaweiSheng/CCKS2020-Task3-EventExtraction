@@ -1,7 +1,7 @@
 
 # CCKS-2020 Financial Event Extraction
 
-Source code for CCKS 2020 competition paper: [A Joint Learning Framework for the CCKS-2020 Financial Event Extraction Task](https://direct.mit.edu/dint/article/3/3/444/100995/A-Joint-Learning-Framework-for-the-CCKS-2020). 
+Source code for CCKS 2020 competition rank-1 paper: [A Joint Learning Framework for the CCKS-2020 Financial Event Extraction Task](https://direct.mit.edu/dint/article/3/3/444/100995/A-Joint-Learning-Framework-for-the-CCKS-2020). 
 
 This paper presents a winning solution for the CCKS-2020 financial event extraction task, where the goal is to identify event types, triggers and arguments in sentences across multiple event types. In this task, we focus on resolving two challenging problems (i.e., low resources and element overlapping) by proposing a joint learning framework, named SaltyFishes. We first formulate the event extraction task as a joint probability model. By sharing parameters in the model across different types, we can learn to adapt to low-resource events based on high-resource events. We further address the element overlapping problems by a mechanism of Conditional Layer Normalization, achieving even better extraction accuracy. The overall approach achieves an F1-score of 87.8% which ranks the first place in the competition.
 
